@@ -23,9 +23,6 @@ using System.Windows.Xps.Packaging;
 using System.Windows.Shapes;
 using System.Printing;
 using System.Windows.Xps;
-using PdfiumViewer;
-using System.Windows;
-using System.Windows.Forms;
 
 
 namespace iNKORE.UI.WPF.Modern.Gallery
