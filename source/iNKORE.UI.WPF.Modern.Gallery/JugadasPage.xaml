@@ -1,0 +1,49 @@
+<local:ItemsPageBase
+    x:Class="iNKORE.UI.WPF.Modern.Gallery.JugadasPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:iNKORE.UI.WPF.Modern.Gallery"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:controls="clr-namespace:iNKORE.UI.WPF.Modern.Gallery.Controls"
+    Title="Jugadas"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="ImageTemplate">
+            <!-- <Image
+                Width="190"
+                Height="130"
+                AutomationProperties.Name="{Binding Title}"
+                Source="{Binding ImageLocation}"
+                Stretch="UniformToFill" /> -->
+            <controls:HeaderTile
+                Title="{Binding Title}"
+                Source="{Binding ImageLocation}" />
+        </DataTemplate>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <!--  This grid acts as a root panel for the page.  -->
+    <Grid Background="{DynamicResource HomePageBackgroundBrush}">
+
+        <Grid VerticalAlignment="Top">
+            <TextBlock Text="Loterías" Margin="0,0,0,50" FontSize="24" FontWeight="Bold" TextAlignment="Center"/>
+        </Grid>
+
+        <Grid VerticalAlignment="Top">
+            <ui:GridView
+                x:Name="BasicGridView"
+                Margin="0,50,0,0"
+                IsItemClickEnabled="True"
+                ItemTemplate="{StaticResource ImageTemplate}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center" />
+        </Grid>
+
+    </Grid>
+</local:ItemsPageBase>
