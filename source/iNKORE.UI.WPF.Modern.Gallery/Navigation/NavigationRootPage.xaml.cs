@@ -47,7 +47,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery
         private NavigationViewItem _allControlsMenuItem;
         private NavigationViewItem _newControlsMenuItem;
         private NavigationViewItem jugadas;
-        private NavigationViewItem recargas;
 
         public static NavigationRootPage GetForElement(object obj)
         {
@@ -190,17 +189,13 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                     this._newControlsMenuItem = itemGroup;
                 }else if (group.UniqueId == "Jugadas"){
                     this.jugadas = itemGroup;
-                }else if (group.UniqueId == "Recargas"){
-                    this.recargas = itemGroup;
                 }
             }
 
             // Move "What's New" and "All Controls" to the top of the NavigationView
-            NavigationViewControl.MenuItems.Remove(recargas);
             NavigationViewControl.MenuItems.Remove(jugadas);
             NavigationViewControl.MenuItems.Remove(_allControlsMenuItem);
             NavigationViewControl.MenuItems.Remove(_newControlsMenuItem);
-            NavigationViewControl.MenuItems.Insert(0, recargas);
             NavigationViewControl.MenuItems.Insert(0, jugadas);
             NavigationViewControl.MenuItems.Insert(0, _allControlsMenuItem);
             NavigationViewControl.MenuItems.Insert(0, _newControlsMenuItem);
@@ -306,20 +301,15 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                    {
                        rootFrame.Navigate(typeof(JugadasPage));
                    }
-                }else if (selectedItem == recargas){
-                   if (rootFrame.CurrentSourcePageType != typeof(RecargasPage))
-                   {
-                       rootFrame.Navigate(typeof(RecargasPage));
-                   }
                 }
                 else
                 {
-                    if (selectedItem.DataContext is ControlInfoDataGroup)
-                    {
-                        var itemId = ((ControlInfoDataGroup)selectedItem.DataContext).UniqueId;
-                        rootFrame.Navigate(typeof(SectionPage), itemId);
-                    }
-                    else if (selectedItem.DataContext is ControlInfoDataItem)
+                    // if (selectedItem.DataContext is ControlInfoDataGroup)
+                    // {
+                    //     var itemId = ((ControlInfoDataGroup)selectedItem.DataContext).UniqueId;
+                    //     rootFrame.Navigate(typeof(SectionPage), itemId);
+                    // }
+                    if (selectedItem.DataContext is ControlInfoDataItem)
                     {
                         var item = (ControlInfoDataItem)selectedItem.DataContext;
                         rootFrame.Navigate(typeof(ItemPage), item.UniqueId);
@@ -330,15 +320,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         private void OnRootFrameNavigated(object sender, NavigationEventArgs e)
         {
-            if (rootFrame.SourcePageType == typeof(AllControlsPage) ||
-                rootFrame.SourcePageType == typeof(NewControlsPage))
-            {
-                NavigationViewControl.AlwaysShowHeader = false;
-            }
-            else
-            {
-                NavigationViewControl.AlwaysShowHeader = true;
-            }
+            NavigationViewControl.AlwaysShowHeader = false;
         }
 
         private void OnControlsSearchBoxTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)

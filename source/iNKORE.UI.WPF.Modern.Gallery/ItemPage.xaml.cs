@@ -141,8 +141,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                     // So lets generate the github links and set them!
                     var gitHubBaseURI = "https://github.com/microsoft/Xaml-Controls-Gallery/tree/master/XamlControlsGallery/ControlPages/";
                     var pageName = pageType.Name + ".xaml";
-                    PageCodeGitHubLink.NavigateUri = new Uri(gitHubBaseURI + pageName + ".cs");
-                    PageMarkupGitHubLink.NavigateUri = new Uri(gitHubBaseURI + pageName);
 
                     this.contentFrame.Navigate(pageType);
                 }
@@ -182,73 +180,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery
                 dynMethod.Invoke(innerPage, new object[] { e });
             }
             base.OnNavigatedFrom(e);
-        }
-
-        private void OnContentRootSizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            if (contentColumn.ActualWidth >= 1000)
-            {
-                contentFrame.Width = 1028;
-                contentFrame.HorizontalAlignment = HorizontalAlignment.Left;
-            }
-            else
-            {
-                contentFrame.Width = double.NaN;
-                contentFrame.HorizontalAlignment = HorizontalAlignment.Stretch;
-            }
-
-            if (Application.Current.MainWindow.ActualWidth >= 1372)
-            {
-                seeAlsoPanel.Width = double.NaN;
-                Grid.SetRow(seeAlsoPanel, 0);
-                Grid.SetColumn(seeAlsoPanel, 2);
-                Grid.SetColumnSpan(seeAlsoPanel, 1);
-
-                Grid.SetColumnSpan(SourcePanel, 3);
-
-                Grid.SetColumnSpan(DocumentationPanel, 3);
-
-                Grid.SetRow(RelatedControlsPanel, 2);
-                Grid.SetColumn(RelatedControlsPanel, 0);
-                Grid.SetColumnSpan(RelatedControlsPanel, 1);
-
-                Grid.SetRow(FeedbackPanel, 3);
-                Grid.SetColumn(FeedbackPanel, 0);
-                Grid.SetColumnSpan(FeedbackPanel, 3);
-
-                rightMargin.Width = new GridLength(20);
-                contentRoot.Padding = new Thickness(56, 0, 12, 36);
-            }
-            else
-            {
-                seeAlsoPanel.Width = double.NaN;
-                Grid.SetRow(seeAlsoPanel, 3);
-                Grid.SetColumn(seeAlsoPanel, 0);
-                Grid.SetColumnSpan(seeAlsoPanel, 3);
-
-                Grid.SetColumnSpan(SourcePanel, 1);
-
-                Grid.SetColumnSpan(DocumentationPanel, 1);
-
-                Grid.SetRow(RelatedControlsPanel, 0);
-                Grid.SetColumn(RelatedControlsPanel, 2);
-                Grid.SetColumnSpan(RelatedControlsPanel, 1);
-
-                Grid.SetRow(FeedbackPanel, 1);
-                Grid.SetColumn(FeedbackPanel, 2);
-                Grid.SetColumnSpan(FeedbackPanel, 1);
-
-                if (Application.Current.MainWindow.ActualWidth < (double)App.Current.Resources["Breakpoint640Plus"])
-                {
-                    rightMargin.Width = new GridLength(0);
-                    contentRoot.Padding = new Thickness(14, 0, 14, 0);
-                }
-                else
-                {
-                    rightMargin.Width = new GridLength(20);
-                    contentRoot.Padding = new Thickness(56, 0, 12, 36);
-                }
-            }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

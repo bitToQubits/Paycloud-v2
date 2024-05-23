@@ -23,13 +23,14 @@ using iNKORE.UI.WPF.Modern.Gallery.Common;
 using iNKORE.UI.WPF.Modern.Helpers;
 using iNKORE.UI.WPF.Helpers;
 
-namespace iNKORE.UI.WPF.Modern.Gallery
+namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
 {
     /// <summary>
     /// A page that displays a grouped collection of items.
     /// </summary>
 
-    public sealed partial class RecargasPage : ItemsPageBase
+    public partial class RecargasPage : ItemsPageBase
+    // public sealed partial class RecargasPage : ItemsPageBase
     {
         public RecargasPage()
         {
@@ -39,10 +40,6 @@ namespace iNKORE.UI.WPF.Modern.Gallery
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var menuItem = NavigationRootPage.Current.NavigationView.MenuItems.Cast<NavigationViewItem>().ElementAt(3);
-            menuItem.IsSelected = true;
-            NavigationRootPage.Current.NavigationView.Header = string.Empty;
-
             Items = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items).OrderBy(i => i.Title).ToList();
             DataContext = Items;
 

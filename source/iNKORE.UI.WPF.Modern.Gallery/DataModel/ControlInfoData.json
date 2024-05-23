@@ -28,13 +28,41 @@
       "Items": []
     },
     {
-      "UniqueId": "Recargas",
+      "UniqueId": "paqueticos",
       "Title": "Recargas",
       "Subtitle": "",
-      "ImagePath": "",
+      "ImagePath": "",
       "ImageIconPath": "\ued2a",
       "Description": "",
-      "Items": []
+      "Items": [
+        {
+          "UniqueId": "Recargas",
+          "Title": "Agregar",
+          "Subtitle": "",
+          "ImagePath": "ms-appx:///Assets/ControlImages/TextBox.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/TextBoxIcon.png",
+          "Description": "",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "Docs": [],
+          "RelatedControls": [
+          ]
+        },
+        {
+          "UniqueId": "RecargasReporte",
+          "Title": "Reporte de facturas",
+          "Subtitle": "",
+          "ImagePath": "ms-appx:///Assets/ControlImages/TextBox.png",
+          "ImageIconPath": "ms-appx:///Assets/ControlIcons/TextBoxIcon.png",
+          "Description": "",
+          "Content": "",
+          "IsNew": false,
+          "IsUpdated": false,
+          "Docs": [],
+          "RelatedControls": []
+        }
+      ]
     },
     {
       "UniqueId": "MenusAndToolbars",
