@@ -124,7 +124,7 @@ namespace iNKORE.UI.WPF.Modern.Gallery.ControlPages
             }
             else
             {
-                MessageBox.Show("No existe", "Notificación");
+                MessageBox.Show("No existe la factura en el sistema.", "Notificación");
             }
         }
 
